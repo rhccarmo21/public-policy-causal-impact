@@ -67,6 +67,8 @@ result = evaluator.estimate_effect(
 # Visualizar resultados
 result.plot_effect()
 print(result.summary)
+
+
 📊 Exemplo Prático
 Avaliação do impacto do programa Bolsa Família na mortalidade infantil:
 
@@ -84,6 +86,8 @@ sc = SyntheticControl(
 
 sc.fit(predictors=["pib", "populacao", "esgoto_sanitario"])
 sc.plot(plot_type="counterfactual")
+
+
 🔄 Fluxo de Análise
 Diagram
 Code
@@ -94,6 +98,8 @@ graph TD
     D --> E[Testes de Robustez]
     E --> F[Visualização]
     F --> G[Relatório Automático]
+
+
 📂 Dataset de Exemplo
 Incluímos dados simulados no diretório examples/ com:
 
