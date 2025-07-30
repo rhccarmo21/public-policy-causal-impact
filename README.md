@@ -1,174 +1,152 @@
 
-# 🏛️ Análise Causal de Políticas Públicas
+# 🏛️ Public Policy Causal Impact
 
-[![Licença MIT](https://img.shields.io/badge/Licen%C3%A7a-MIT-green)](https://pt.wikipedia.org/wiki/Licen%C3%A7a_MIT)
-[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/downloads/)
-[![Status](https://img.shields.io/badge/Status-Produ%C3%A7%C3%A3o-brightgreen)]()
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXX)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)
+![Docs: Passing](https://img.shields.io/badge/docs-passing-brightgreen)
 
-## 📚 Sumário Executivo
-Ferramenta open-source para avaliação de impacto real de políticas públicas utilizando métodos causais avançados e dados oficiais brasileiros.
-
-## 🎯 Objetivos Principais
-1. **Avaliação Precisa**: Medir efeitos causais (não apenas correlações)
-2. **Transparência**: Metodologia aberta e replicável
-3. **Aplicabilidade**: Foco em políticas brasileiras
-4. **Eficiência**: Automatização de análises complexas
+Framework para avaliação causal de políticas públicas com métodos quasi-experimentais.  
+Este projeto fornece uma implementação inicial do método **Controle Sintético**, aplicada a um caso ilustrativo sobre o impacto do **Programa Bolsa Família** na mortalidade infantil na região Norte do Brasil.
 
 ---
 
-## 🔍 Métodos Científicos Implementados
+## 📑 Tabela de Conteúdos
 
-### 1. Diferenças-em-Diferenças (DiD)
-```python
-# Exemplo: Avaliação de programa educacional
-from impacto_causal import DiferençasDiferenças
-
-analise = DiferençasDiferenças(
-    dados=df_educacao,
-    tratamento='escolas_participantes',
-    resultado='nota_enem',
-    covariadas=['investimento_por_aluno', 'idd_educacional']
-)
-```
-
-### 2. Controle Sintético
-```python
-# Exemplo: Análise de política de segurança
-from impacto_causal import ControleSintético
-
-modelo = ControleSintético(
-    unidade_tratada="Fortaleza",
-    resultado="homicidios",
-    covariadas=["populacao", "pib_per_capita", "taxa_desemprego"]
-)
-```
-
-### 3. Validação Estatística
-- Testes de placebo
-- Análise de sensibilidade
-- Validação cruzada temporal
+- [Visão Geral](#visão-geral)
+- [Exemplo Prático](#exemplo-prático)
+- [Instalação](#instalação)
+- [Uso](#uso)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Requisitos](#requisitos)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
 
 ---
 
-## 📊 Bases de Dados Integradas
+## 🎯 Visão Geral
 
-| Fonte | Descrição | Variáveis-Chave | Acesso |
-|-------|-----------|-----------------|--------|
-| **IBGE** | Censos e pesquisas | Demográficas, socioeconômicas | API |
-| **DATASUS** | Saúde pública | Mortalidade, morbidade | CSV |
-| **INEP** | Educação | Notas, fluxo escolar | JSON |
-| **IPEA** | Indicadores regionais | PIB, emprego | Excel |
+O objetivo do `public-policy-causal-impact` é disponibilizar ferramentas para análise de impacto de políticas públicas com base em métodos estatísticos replicáveis, acessíveis a pesquisadores e gestores públicos.
 
-**Exemplo Prático:**
-```python
-from impacto_causal import carregar
+### ✔️ Funcionalidades:
 
-dados = carregar(
-    fonte="INEP",
-    conjunto="ideb",
-    filtros={"uf": ["CE", "SP"], "ano": [2015, 2019]}
-)
-```
+- Estimativa do impacto causal de políticas públicas
+- Geração de contrafatuais
+- Visualização gráfica dos resultados
+- Base de dados ilustrativa embutida
 
 ---
 
-## 🛠️ Guia de Implementação
+## 🧪 Exemplo Prático: Bolsa Família
 
-### Requisitos Técnicos
-- **Hardware**: 8GB RAM (16GB recomendado)
-- **Sistema**: Linux/Windows 10+
-- **Dependências**: Python 3.9+, Pandas 1.3+
+### Cenário
 
-### Instalação Passo-a-Passo
+Avaliar se a mortalidade infantil na região Norte foi impactada após a implementação do programa Bolsa Família (a partir de 2005), comparando com uma unidade sintética construída a partir da região Sudeste.
+
+---
+
+## ⚙️ Instalação
+
+### Pré-requisitos
+
+- Python 3.9+
+- `pip` instalado
+
+### Instalação
+
+Clone o repositório e instale as dependências:
+
 ```bash
-# 1. Criar ambiente virtual
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-.\venv\Scripts\activate  # Windows
+git clone https://github.com/seu-usuario/public-policy-causal-impact.git
+cd public-policy-causal-impact
+pip install -r requirements.txt
 
-# 2. Instalação completa
-pip install impacto-causal[full]
-
-# 3. Verificar
-python -m impacto_causal.validar_instalacao
-```
 
 ---
 
-## 📈 Casos de Uso Reais
+🚀 Uso
 
-### 1. Programa de Saúde da Família
-**Método**: DiD  
-**Resultado**: Redução de 22% em internações evitáveis  
-**Fonte**: DATASUS 2010-2020  
+Execute o script de exemplo:
 
-### 2. Lei Seca Municipal
-**Método**: Controle Sintético  
-**Resultado**: Queda de 15% em acidentes graves  
-**Fonte**: PRF 2009-2019  
+python scripts/exemplo_bolsa_familia.py
 
----
+Saída esperada
 
-## 📝 Como Contribuir
+Gráfico comparando o valor observado e o contrafactual
 
-1. **Reporte Problemas**  
-   Acesse nossa [página de issues](https://github.com/seuusuario/impacto-causal/issues)
+Impressão no terminal com a estimativa do impacto médio:
 
-2. **Padrões de Código**
-   ```python
-   # Exemplo de código aceitável
-   def analisar_impacto(dados: pd.DataFrame) -> Dict:
-       """Documentação clara"""
-       # Implementação PEP 8
-   ```
 
-3. **Fluxo Recomendado**
-   ```bash
-   git checkout -b feature/nova-analise
-   git commit -m "Adiciona modelo RDD"
-   git push origin feature/nova-analise
-   ```
+Efeito Causal Estimado: -2.30
+
 
 ---
 
-## 📜 Licença e Citação
+📁 Estrutura do Projeto
 
-```latex
-@software{ImpactoCausal2023,
-  author = {Sobrenome, Nome},
-  title = {Ferramenta de Análise Causal para Políticas Públicas},
-  year = {2023},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/seuusuario/impacto-causal}}
-}
-```
+public-policy-causal-impact/
+│
+├── causal_impact/
+│   ├── synthetic_control.py        # Lógica do controle sintético
+│   └── datasets/
+│       ├── __init__.py
+│       └── bolsa_familia.csv      # Dados simulados
+│
+├── scripts/
+│   └── exemplo_bolsa_familia.py   # Roda o exemplo de uso
+│
+├── requirements.txt
+├── setup.py
+└── README.md
+
 
 ---
 
-## 🌐 Contato e Suporte
+📦 Requisitos
 
-**Equipe Técnica**  
-[analise.causal@org.br](mailto:analise.causal@org.br)  
+Instalados via requirements.txt:
 
-**Redes Sociais**  
-[![Twitter](https://img.shields.io/twitter/follow/ImpactoCausal?style=social)](https://twitter.com/ImpactoCausal)
+pandas
 
-**Canais Oficiais**  
-[Portal de Documentação](https://impactocausal.org.br/docs) | [Fórum de Discussões](https://github.com/seuusuario/impacto-causal/discussions)
-```
+scikit-learn
 
-### Dicas Finais para GitHub:
-1. **Preview**: Sempre visualize no GitHub antes de commitar
-2. **Formatação**: Mantenha exatamente 1 linha em branco entre seções
-3. **Emojis**: Use com moderação para melhor legibilidade
-4. **Links**: Verifique se todos estão funcionando
+matplotlib
 
-Este README está otimizado para:
-- Clareza técnica
-- Replicabilidade científica
-- Integração com ecossistema brasileiro
-- Facilidade de contribuição
 
-Se precisar de qualquer ajuste adicional, estou à disposição!
+
+---
+
+🤝 Contribuição
+
+Contribuições são bem-vindas! Para colaborar:
+
+1. Fork este repositório
+
+
+2. Crie uma branch (git checkout -b feature/nova-funcionalidade)
+
+
+3. Commit suas alterações (git commit -m 'Adiciona nova funcionalidade')
+
+
+4. Push para a branch (git push origin feature/nova-funcionalidade)
+
+
+5. Abra um Pull Request
+
+
+
+
+---
+
+📄 Licença
+
+Distribuído sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+
+---
+
+📬 Contato
+
+Projeto de exemplo criado por Roberto Cunha com apoio do ChatGPT.
+Inspirado em aplicações reais de avaliação de políticas públicas no Brasil.
+
