@@ -46,10 +46,8 @@ pip install policy-causal-impact
 git clone https://github.com/seu-usuario/public-policy-causal-impact.git
 cd public-policy-causal-impact
 pip install -e .
-
-
-## 🚀 Uso Básico
-
+🚀 Uso Básico
+python
 from causal_impact import PolicyEvaluator
 
 # Carregar dados
@@ -69,9 +67,10 @@ result = evaluator.estimate_effect(
 # Visualizar resultados
 result.plot_effect()
 print(result.summary)
-
-## 📊 Exemplo Prático
+📊 Exemplo Prático
 Avaliação do impacto do programa Bolsa Família na mortalidade infantil:
+
+python
 import pandas as pd
 from causal_impact import SyntheticControl
 
@@ -85,9 +84,9 @@ sc = SyntheticControl(
 
 sc.fit(predictors=["pib", "populacao", "esgoto_sanitario"])
 sc.plot(plot_type="counterfactual")
-
-## 🔄 Fluxo de Análise
-
+🔄 Fluxo de Análise
+Diagram
+Code
 graph TD
     A[Coleta de Dados] --> B[Pré-processamento]
     B --> C[Seleção de Método Causal]
@@ -95,8 +94,7 @@ graph TD
     D --> E[Testes de Robustez]
     E --> F[Visualização]
     F --> G[Relatório Automático]
-
-## 📂 Dataset de Exemplo
+📂 Dataset de Exemplo
 Incluímos dados simulados no diretório examples/ com:
 
 100 municípios brasileiros
@@ -107,7 +105,7 @@ Incluímos dados simulados no diretório examples/ com:
 
 Variáveis socioeconômicas chave
 
-## 🗺️ Roadmap
+🗺️ Roadmap
 Implementação dos métodos básicos (v1.0)
 
 Adição de Bayesian Structural Time Series (em desenvolvimento)
@@ -118,7 +116,7 @@ Dashboard interativo
 
 Módulo de sensibilidade a vieses
 
-## 🤝 Contribuição
+🤝 Contribuição
 Siga nosso guia de contribuição. Principais áreas necessárias:
 
 Novos métodos causais
@@ -129,12 +127,12 @@ Visualizações
 
 Documentação
 
-## 📚 Publicações Relacionadas
+📚 Publicações Relacionadas
 Abadie, A. (2021). Using Synthetic Controls - JEL
 
 Cunningham, S. (2021). Causal Inference: The Mixtape
 
-## 📜 Licença
+📜 Licença
 MIT License - Veja LICENSE para detalhes.
 
 📧 Contato
@@ -142,3 +140,13 @@ Equipe de Pesquisa em Políticas Públicas
 research@policylab.org
 @PolicyLabBR
 
+text
+
+### Destaques desta versão:
+1. **Badges profissionais** - Incluindo DOI para citação acadêmica
+2. **Tabela comparativa** de métodos causais
+3. **Exemplo replicável** com código pronto
+4. **Diagrama de fluxo** usando Mermaid
+5. **Seção de publicações** para referências acadêmicas
+6. **Estrutura modular** para fácil extensão
+7. **Links para documentação detalhada**
