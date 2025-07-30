@@ -47,7 +47,8 @@ git clone https://github.com/seu-usuario/public-policy-causal-impact.git
 cd public-policy-causal-impact
 pip install -e .
 
-🚀 Uso Básico
+
+## 🚀 Uso Básico
 
 from causal_impact import PolicyEvaluator
 
@@ -69,7 +70,7 @@ result = evaluator.estimate_effect(
 result.plot_effect()
 print(result.summary)
 
-📊 Exemplo Prático
+## 📊 Exemplo Prático
 Avaliação do impacto do programa Bolsa Família na mortalidade infantil:
 import pandas as pd
 from causal_impact import SyntheticControl
@@ -85,7 +86,7 @@ sc = SyntheticControl(
 sc.fit(predictors=["pib", "populacao", "esgoto_sanitario"])
 sc.plot(plot_type="counterfactual")
 
-🔄 Fluxo de Análise
+## 🔄 Fluxo de Análise
 
 graph TD
     A[Coleta de Dados] --> B[Pré-processamento]
@@ -95,7 +96,7 @@ graph TD
     E --> F[Visualização]
     F --> G[Relatório Automático]
 
-📂 Dataset de Exemplo
+## 📂 Dataset de Exemplo
 Incluímos dados simulados no diretório examples/ com:
 
 100 municípios brasileiros
@@ -106,7 +107,7 @@ Incluímos dados simulados no diretório examples/ com:
 
 Variáveis socioeconômicas chave
 
-🗺️ Roadmap
+## 🗺️ Roadmap
 Implementação dos métodos básicos (v1.0)
 
 Adição de Bayesian Structural Time Series (em desenvolvimento)
@@ -117,7 +118,7 @@ Dashboard interativo
 
 Módulo de sensibilidade a vieses
 
-🤝 Contribuição
+## 🤝 Contribuição
 Siga nosso guia de contribuição. Principais áreas necessárias:
 
 Novos métodos causais
@@ -128,12 +129,12 @@ Visualizações
 
 Documentação
 
-📚 Publicações Relacionadas
+## 📚 Publicações Relacionadas
 Abadie, A. (2021). Using Synthetic Controls - JEL
 
 Cunningham, S. (2021). Causal Inference: The Mixtape
 
-📜 Licença
+## 📜 Licença
 MIT License - Veja LICENSE para detalhes.
 
 📧 Contato
